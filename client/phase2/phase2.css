@@ -1,0 +1,49 @@
+.tabMenuImage
+{
+  max-height:80px
+}
+
+.tabMenuHeading{
+  font-weight:bold;
+  font-size:1.5em;
+  text-align:center;
+  color:black;
+
+}
+.tab-pane
+{
+  font-weight:bold;
+  font-size:2.5em;
+  text-align:center;
+  color:black;
+  background:#FFDB97;
+  padding:3%;
+}
+
+#newBid
+{
+  color:white;
+  font-weight:bold;
+  font-size:1.0em;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus, 
+.nav-tabs > li > a:hover
+{
+  background:#FFDB97;
+}
+
+
+.bidHistory
+{
+  list-style:none;
+}
+
+.bidHistory li
+{
+  background:white;
+  font-size:0.4em;
+  border:1px solid black;
+  text-align:left;
+  padding:2%;
+  
+}

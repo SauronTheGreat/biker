@@ -1,0 +1,54 @@
+.userDetails
+{
+  margin-top:5%;
+}
+
+.userDetailsLabel
+{
+  font-size:2.0em;
+}
+.storeDetails
+{
+  height:145%;
+  font-size:1.3em;
+  font-weight:bold;
+  border:none;
+  width:100%
+}
+
+.grad
+{
+background: -webkit-linear-gradient(#F18B53, #EE6C22); /* For Safari 5.1 to 6.0 */
+background: -o-linear-gradient(#F18B53, #EE6C22); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(#F18B53, #EE6C22); /* For Firefox 3.6 to 15 */
+background: linear-gradient(#F18B53, #EE6C22); /* standard syntax*/
+}
+
+
+
+
+
+
+.formMidPart .row
+{
+  padding-top:7px;
+}
+
+.formRightPart
+{
+ height: 110px;
+    
+  padding-top:7px;
+}
+
+.instructionContainer
+{
+ background: -webkit-linear-gradient(#C78247, #C66119); /* For Safari 5.1 to 6.0 */
+background: -o-linear-gradient(#C78247, #C78247); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(#C78247, #C78247); /* For Firefox 3.6 to 15 */
+background: linear-gradient(#C78247, #C78247); /* standard syntax*/
+  opacity:0.8;
+  padding:3%;
+  margin-top:3%;
+}
+

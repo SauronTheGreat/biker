@@ -1,0 +1,40 @@
+.phaseContainer
+{
+  margin-top:10%;
+}
+
+.initText
+{
+  font-size:5.8em;
+ 
+}
+
+.phase1Container
+{
+  margin-left:10%;
+  background:url("images/motorcycle.png");
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+  height:100%;
+  background-position: 7px -20px;
+}
+.phase1oInstr
+{
+  font-weight:bold;
+  font-size:1.3em;
+}
+
+.totalPoints
+{
+  padding: 5%;
+  font-size:3.5em;
+  background:#FFDB97;
+  text-align:center;
+}
+
+.submitPhase1
+{
+  padding:3%;
+  font-size:2.0em;
+  font-weight:bold;
+}
