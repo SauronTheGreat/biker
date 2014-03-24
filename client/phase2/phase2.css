@@ -13,7 +13,7 @@
 .tab-pane
 {
   font-weight:bold;
-  font-size:2.5em;
+  font-size:2.3em;
   text-align:center;
   color:black;
   background:#FFDB97;
@@ -32,10 +32,17 @@
   background:#FFDB97;
 }
 
+.tabHeader
+{
+  pointer-events:none;
+}
+
 
 .bidHistory
 {
   list-style:none;
+  height:160px;
+  overflow-y:auto;
 }
 
 .bidHistory li

@@ -6,22 +6,42 @@
 .initText
 {
   font-size:5.8em;
+  color:white;
  
 }
 
 .phase1Container
 {
-  margin-left:10%;
-  background:url("images/motorcycle.png");
-  background-size:100% 100%;
-  background-repeat:no-repeat;
+ 
+  
+ 
   height:100%;
-  background-position: 7px -20px;
+  width:100%;
+  position:relative;
+  
 }
+#bikeImage
+{
+  position:absolute;
+  
+  width:100%;
+  top:0;
+  left:0;
+}
+
+.formElm
+{
+  position:absolute;
+  top:0;
+  left:0;
+}
+
 .phase1oInstr
 {
   font-weight:bold;
-  font-size:1.3em;
+  font-size:1.5em;
+  line-height:1.05;
+  color:white;
 }
 
 .totalPoints
@@ -37,4 +57,41 @@
   padding:3%;
   font-size:2.0em;
   font-weight:bold;
+  margin-top:0.5em;
+}
+
+.engine
+{
+  top:17%;
+  left:33%;
+}
+
+.style
+{
+  top:24%;
+  left:60%;
+}
+
+.suspension
+{
+  top:34%;
+  left:10%;
+}
+
+.wheel
+{
+  top:44%;
+  left:10%;
+}
+
+.frame
+{
+  top:53%;
+  left:35%;
+}
+
+.tire
+{
+  top:48%;
+  left:72%;
 }

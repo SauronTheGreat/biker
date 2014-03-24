@@ -1,63 +1,58 @@
 <template name="phase2">
-  <div class="row phaseContainer">
-    <div class="col-lg-12 col-md-12">
-      <div class="col-lg-7 col-lg-offset-3 col-md-8 col-md-offset-2">
-        <span class="initText"> Initiate Phase II...</span>
-      </div>
-    </div>
-  </div>
-    <div class="row">
-  <div class="col-lg-12">
-    <div class="col-lg-3 col-lg-offset-4 col-md-3 col-md-offset-4">
-      <img src="/images/startGame.png" class="img-responsive" id="playPhase2">
-    </div>
-  </div>
-  </div>
+  <br/>
+  <br/>
+<div class="row">
+  <span class="gameHeading">Phase II</span>
+</div>
+  
+<div class="row">
+  <span class="gameTagLine">Initiating...</span>
+ 
+</div>
+  
+<div class="row">
+  <img src="/images/startGame.png" class="img-responsive activateBtn" id="playPhase2">
+</div>
+  
   
 </template>
 
 <template name="phase2play">
   
-  <div class="row">
-  <div class="row" style="margin-top:5%">
-    <div class="col-lg-8 col-md-8">
-      <div class="row">
-        <div class="col-lg-4 col-lg-offset-3 col-md-4 col-md-offset-2">
-          <h2 style="font-weight:bold">Phase II </h2>
-        </div>
-      </div>
-      <div class="row">
-         <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
-        <span class="phase1oInstr">
-       You are competing for the contract to design a part of the motorcycle. Each part will go up in auction and the highest bidder will get it. You have Rs. 1,00,000 across all the parts. The team which ends up with the highest sum of points from Phase I will win.
-
-        </span>
-        </div>
-      </div>
+    <div class="row" style="margin-top:5%">
+    <div class="col-lg-5 col-md-5 col-lg-offset-1 col-md-offset-1">
+      <h2 style="font-weight:bold;color:white;">Phase II </h2>
+        <div class="phase1oInstr">
+         You are competing for the contract to design a part of the motorcycle. Each part will go up in auction and the highest bidder will get it. You have Rs. 1,00,000 across all the parts. The team which ends up with the highest sum of points from Phase I will win.
+        </div> 
+    </div>
+    <div class="col-lg-3 col-md-3 col-lg-offset-2 col-md-offset-2">
+      <br/>
+      <div class="totalPoints wallet">{{#if refreshWallet}}
+          {{wallet}}
+          {{/if}}</div>
       
     </div>
-    <div class="col-lg-2 col-md-2">
-      <div class="row" style="margin-top:30%">
-           <span class=" col-lg-12 col-md-12 totalPoints">100000</span>
-      </div>
-     
-      </div>
-  </div>
+  
+</div>
+  <br/>
+  <br/>
+  
     <div class="row">
       <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
   <ul class="nav nav-tabs">
-  <li class="active"><a href="#style" data-toggle="tab">
+  <li class=" tabHeader" id="header-style"><a href="#style" data-toggle="tab">
     <span class="tabMenuHeading">Styling</span><img src="/images/styling.png" class="img-responsive tabMenuImage"></a></li>
-  <li><a href="#engine" data-toggle="tab"> <span class="tabMenuHeading">Engine</span><img src="/images/engine.png" class="img-responsive tabMenuImage"></a></li>
-    <li><a href="#frame" data-toggle="tab"> <span class="tabMenuHeading">Frame Type</span><img src="/images/frame.png" class="img-responsive tabMenuImage"></a></li>
-  <li><a href="#wheel" data-toggle="tab"> <span class="tabMenuHeading">Wheel Base</span> <img src="/images/wheel.png" class="img-responsive tabMenuImage"></a></li>
-    <li><a href="#tire" data-toggle="tab"> <span class="tabMenuHeading">Tire Size</span><img src="/images/tire.png" class="img-responsive tabMenuImage"></a></li>
-     <li><a href="#suspension" data-toggle="tab"> <span class="tabMenuHeading">Suspension</span><img src="/images/suspension.png" class="img-responsive tabMenuImage"></a></li>
+  <li class="tabHeader" id="header-engine"><a href="#engine" data-toggle="tab"> <span class="tabMenuHeading">Engine</span><img src="/images/engine.png" class="img-responsive tabMenuImage"></a></li>
+    <li class="tabHeader" id="header-frame"><a href="#frame" data-toggle="tab"> <span class="tabMenuHeading">Frame Type</span><img src="/images/frame.png" class="img-responsive tabMenuImage"></a></li>
+  <li class="tabHeader" id="header-wheel"><a href="#wheel" data-toggle="tab"> <span class="tabMenuHeading">Wheel Base</span> <img src="/images/wheel.png" class="img-responsive tabMenuImage"></a></li>
+    <li class="tabHeader" id="header-tire"><a href="#tire" data-toggle="tab"> <span class="tabMenuHeading">Tire Size</span><img src="/images/tire.png" class="img-responsive tabMenuImage"></a></li>
+     <li class="tabHeader" id="header-suspension"><a href="#suspension" data-toggle="tab"> <span class="tabMenuHeading">Suspension</span><img src="/images/suspension.png" class="img-responsive tabMenuImage"></a></li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane active" id="style">
+  <div class="tab-pane " id="style">
     {{>tabContent}}              
   </div>
   <div class="tab-pane" id="engine">{{>tabContent}}</div>
@@ -76,7 +71,8 @@
   <template name="tabContent">
         <div class="row">
       <div class="col-lg-12 col-md-12">
-        <div class="col-lg-6 col-md-6 ">
+        <div class="col-lg-6 col-md-6  ">
+          <span class="bidData"></span>
         <div class="row">
           <div class="col-lg-6 col-md-6" style="color:#512507;text-align:left">
             Current Bid
@@ -93,7 +89,7 @@
             Your  Bid
           </div>
           <div class="col-lg-6 col-md-6"  style="text-align:right">
-            <input type="number" class="form-control input-lg" id="newBidVal" placeholder="0">
+            <input type="number" class="form-control input-lg bidVal" id="newBidVal" placeholder="0">
           </div>
           
           
@@ -108,11 +104,12 @@
         </div>
         </div>
         <div class="col-lg-6 col-md-6">
-          <ul class="bidHistory">
+          <h4>Team A </h4>
+          <ul class="bidHistory" >
 
             <li>History</li>
             {{#each previousBids}}
-            <li>{{bidTime}} Bidder bid:{{bid}}</li>
+            <li>{{bidTime}} {{TeamName user_id}} bid:{{bid}}</li>
             {{/each}}
             
                      </ul>

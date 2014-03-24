@@ -1,5 +1,5 @@
 Template.homepage.events
-  'click .startGame':(e)->
+  'click #startGame':(e)->
     if Meteor.user()?
       Router.go("phase1")
     else

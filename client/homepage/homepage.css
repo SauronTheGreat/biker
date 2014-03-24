@@ -1,20 +1,28 @@
 .gameHeading
 {
-  font-size:12.0em;
+  color: #5882FA;
+  font-size:10.0em;
   opacity:0.7;
   font-weight:bold;
-  -webkit-transform:scale(2.0, 1.0);
--moz-transform:scale(2.0, 1.0);
--ms-transform:scale(2.0, 1.0);
--o-transform:scale(2.0, 1.0);
-transform:scale(2.0,1.0);
+  float:right;
+  margin-right:0.3em;
 }
 
 .gameTagLine{
   font-size:3em;
-  font-weight:normal
+  font-weight:normal;
+  line-height:0.9;
+  text-align:right;
+  float:right;
+  margin-right:1em;
+  color:white;
 }
-.startGame
+.activateBtn
 {
-  cursor:pointer
+  cursor:pointer;
+  text-align:right;
+  float:right;
+  margin-right:1em;
+  margin-top:10em;
+  width:18em;
 }

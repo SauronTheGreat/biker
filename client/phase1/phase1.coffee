@@ -26,7 +26,7 @@ Template.phase1play.events
   'keypress input[type=number]':(e)->
     total = 0;
     setTimeout (->
-                 $(".totalPoints").text(get_total_points())
+                 $(".totalPoints").text(100-parseInt(get_total_points()))
 
                 
     ), 100

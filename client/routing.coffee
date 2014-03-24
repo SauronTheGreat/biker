@@ -12,6 +12,26 @@ Router.map ->
           this.template = "admin"
       else
         this.template ="adminLogin"
+        
+  @route "teamSelect",
+    path:'/admin/selectTeams'
+    template:"teamSelection"
+    before:()->
+      if Meteor.user()?
+        if Meteor.user().profile.admin
+          this.template = "teamSelection"
+      else
+        this.template ="adminLogin"
+        
+  @route "activateBidding",
+    path:'/admin/activatebidding'
+    template:"activateBidding"
+    before:()->
+      if Meteor.user()?
+        if Meteor.user().profile.admin
+          this.template = "activateBidding"
+      else
+        this.template ="adminLogin"
 
 
   @route "details",
@@ -48,10 +68,7 @@ Router.map ->
         Router.go("home")
       else
         #now since a user is present, we check if she is admin or player
-        if Meteor.user().profile.admin
-          this.template = "phaseAdmin"
-        else
-          this.template = "phase2"
+        this.template = "phase2"
           
     path:"/phase2"
     template:"phase2"
@@ -63,10 +80,7 @@ Router.map ->
         Router.go("home")
       else
         #now since a user is present, we check if she is admin or player
-        if Meteor.user().profile.admin
-          this.template = "phaseAdmin"
-        else
-          this.template = "phase2play"
+        this.template = "phase2play"
           
     path:"/phase2play"
     template:"phase2play"
