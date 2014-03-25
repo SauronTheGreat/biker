@@ -35,36 +35,36 @@ Template.phase2.events
 @si = 0;
   
 Template.phase2play.rendered = ->
-  console.log "phase1"
+
   Session.set("walletRefresh",true)
   
-  comp = Deps.autorun ->
-    
-    
-
-    if auctionDone.findOne()?
-
-
-      if si isnt 0 
-        Meteor.clearInterval(si);
-      if auctionDone.findOne().countDown?
-        si = Meteor.setInterval ()->
-          timerTime =   auctionDone.findOne().countDown - new Date().getTime()
-          if Math.round(timerTime/1000) > 0
-            $("#"+currentBidItem.findOne().citem).find(".countDownTimer").text(Math.round(timerTime/1000))
-        ,1000
-      if auctionDone.findOne().done
-        $("#"+currentBidItem.findOne().citem).find(".bidVal").attr("disabled", "disabled"); 
-        $("#"+currentBidItem.findOne().citem).find(".bidData").text(getTeamName(getLastBid().user_id)+" won!"); 
-        
-        if Meteor.userId() is getLastBid().user_id and !auctionDone.findOne().completed
-
-          balanceMoney = parseInt(Meteor.user().profile.wallet) - parseInt(getLastBid().bid)
-          Meteor.call "updateUserWallet",Meteor.userId(),balanceMoney
-          Meteor.clearInterval(si);
-          comp.stop();
-          #Meteor.users.update({_id:Meteor.userId()},{$set:{"profile.wallet":balanceMoney}})
-        
+#  comp = Deps.autorun ->
+#
+#
+#
+#    if auctionDone.findOne()?
+#
+#
+#      if si isnt 0
+#        Meteor.clearInterval(si);
+#      if auctionDone.findOne().countDown?
+#        si = Meteor.setInterval ()->
+#          timerTime =   auctionDone.findOne().countDown - new Date().getTime()
+#          if Math.round(timerTime/1000) > 0
+#            $("#"+currentBidItem.findOne().citem).find(".countDownTimer").text(Math.round(timerTime/1000))
+#        ,1000
+#      if auctionDone.findOne().done
+#        $("#"+currentBidItem.findOne().citem).find(".bidVal").attr("disabled", "disabled");
+#        $("#"+currentBidItem.findOne().citem).find(".bidData").text(getTeamName(getLastBid().user_id)+" won!");
+#
+#        if Meteor.userId() is getLastBid().user_id and !auctionDone.findOne().completed
+#
+#          balanceMoney = parseInt(Meteor.user().profile.wallet) - parseInt(getLastBid().bid)
+#          Meteor.call "updateUserWallet",Meteor.userId(),balanceMoney
+#          Meteor.clearInterval(si);
+#          comp.stop();
+#          #Meteor.users.update({_id:Meteor.userId()},{$set:{"profile.wallet":balanceMoney}})
+#
   
 Template.phase2play.wallet = ()->
 
@@ -81,25 +81,21 @@ Template.tabContent.events
      
 
       currentBid = parseInt($("#"+currentBidItem.findOne().citem).find(".bidVal").val())
-      if getLastBid() is -1
-        lastBid = 0
-      else
-        lastBid = getLastBid().bid
+
       balanceMoney =  parseInt($(".wallet").text())
-      if  currentBid <= lastBid
-        alert("You cant bid less than previous bid");
-        return false
       if currentBid > balanceMoney
         alert("you cant bid more than what you have !")
         return false
       else
-        phaseTwoData.insert({user_id:Meteor.userId(),bid: $("#"+currentBidItem.findOne().citem).find(".bidVal").val(),bidcategory:currentBidItem.findOne().citem,bidTime:new Date()})
+        phaseTwoData.insert({user_id:Meteor.userId(),bid:currentBid,bidcategory:currentBidItem.findOne().citem,bidTime:new Date()})
+        $("#"+currentBidItem.findOne().citem).find(".bidVal").attr("disabled", "disabled");
         if Meteor.user().profile.wallet?
-          balance = parseInt(Meteor.user().profile.wallet)-parseInt( $("#"+currentBidItem.findOne().citem).find(".bidVal").val()) 
+          balance = parseInt(Meteor.user().profile.wallet)-currentBid
         else
-          balance = 100000-parseInt( $("#"+currentBidItem.findOne().citem).find(".bidVal").val()) 
+          balance = 100000-currentBid
           
-        Meteor.call "bidSubmitted"
+#        Meteor.call "bidSubmitted"
+        Meteor.call "updateUserWallet",Meteor.userId(),balance
         $(".wallet").text(balance)
         false
 

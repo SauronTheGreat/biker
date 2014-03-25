@@ -39,7 +39,7 @@
 .phase1oInstr
 {
   font-weight:bold;
-  font-size:1.5em;
+  font-size:1.6em;
   line-height:1.05;
   color:white;
 }
@@ -47,51 +47,55 @@
 .totalPoints
 {
   padding: 5%;
-  font-size:3.5em;
-  background:#FFDB97;
+  font-size:3.0em;
+  background:#3B170B ;
   text-align:center;
+    margin-top:39%;
+    color:white;
+    font-weight: bold;
+    border-radius: 1px;
 }
 
 .submitPhase1
 {
-  padding:3%;
+  padding:11%;
   font-size:2.0em;
   font-weight:bold;
-  margin-top:0.5em;
+  margin-top:39%;
 }
 
 .engine
 {
-  top:11%;
+  top:14%;
   left:34%;
 }
 
 .style
 {
-  top:16%;
+  top:19%;
   left:63%;
 }
 
 .suspension
 {
-  top:25%;
+  top:28%;
   left:10%;
 }
 
 .wheel
 {
-  top:41%;
+  top:44%;
   left:13%;
 }
 
 .frame
 {
-  top:55%;
+  top:58%;
   left:35%;
 }
 
 .tire
 {
-  top:48%;
+  top:51%;
   left:79%;
 }
