@@ -8,7 +8,14 @@ getLastBid = ()->
       return -1
       
 getTeamName = (user_id)->
-  Meteor.users.findOne({_id:user_id}).profile.team
+  if user_id isnt 0
+    return Meteor.users.findOne({_id:user_id}).profile.team
+  else
+    if Meteor.user()?
+      return Meteor.user().profile.team
+    else
+      return "wait"
+
   
 Template.tabContent.TeamName = (user_id)->
   getTeamName(user_id)
@@ -36,20 +43,22 @@ Template.phase2play.rendered = ->
     
 
     if auctionDone.findOne()?
-      
+
+
       if si isnt 0 
         Meteor.clearInterval(si);
-        
-      si = setInterval ()->
-        timerTime =   auctionDone.findOne().countDown - new Date().getTime() 
-        $("#"+currentBidItem.findOne().citem).find(".countDownTimer").text(Math.round(timerTime/1000))
-      ,1000  
+      if auctionDone.findOne().countDown?
+        si = Meteor.setInterval ()->
+          timerTime =   auctionDone.findOne().countDown - new Date().getTime()
+          if Math.round(timerTime/1000) > 0
+            $("#"+currentBidItem.findOne().citem).find(".countDownTimer").text(Math.round(timerTime/1000))
+        ,1000
       if auctionDone.findOne().done
         $("#"+currentBidItem.findOne().citem).find(".bidVal").attr("disabled", "disabled"); 
         $("#"+currentBidItem.findOne().citem).find(".bidData").text(getTeamName(getLastBid().user_id)+" won!"); 
         
         if Meteor.userId() is getLastBid().user_id and !auctionDone.findOne().completed
-          console.log "reppear"
+
           balanceMoney = parseInt(Meteor.user().profile.wallet) - parseInt(getLastBid().bid)
           Meteor.call "updateUserWallet",Meteor.userId(),balanceMoney
           Meteor.clearInterval(si);

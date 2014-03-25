@@ -3,15 +3,15 @@ timeout = 0
 create_timeout = ()->
   if timeout isnt 0
     clear_timeout();
-    a = auctionDone.findOne();
-    newDateObj = new Date(new Date().getTime() + 60000);        
-    auctionDone.update({_id:a._id},{$set:{countDown:newDateObj}})
+  a = auctionDone.findOne();
+  newDateObj = new Date(new Date().getTime() + 30000);
+  auctionDone.update({_id:a._id},{$set:{countDown:newDateObj}})
   timeout = Meteor.setTimeout(->
     a = auctionDone.findOne()
                      
     auctionDone.update({_id:a._id},{$set:{done:true}})
     
-  , 60000)
+  , 30000)
   
   
 clear_timeout = ()->
@@ -67,7 +67,7 @@ Meteor.methods
     currentBidItem.remove({});
     currentBidItem.insert({citem:item})
     a = auctionDone.findOne()
-    auctionDone.update({_id:a._id},{$set:{done:false}})
+    auctionDone.update({_id:a._id},{$set:{done:false}},{$unset:{countDown:1}})
 
     
   bidSubmitted:()->
@@ -79,7 +79,7 @@ Meteor.methods
   updateUserWallet:(user_id,walletMoney)->
      Meteor.users.update({_id:user_id},{$set:{"profile.wallet":walletMoney}})
      a = auctionDone.findOne()
-     auctionDone.update({_id:a._id},{$set:{completed:true}})
+     auctionDone.update({_id:a._id},{$set:{completed:true}},{$unset:{countDown:1}})
 
     
 Meteor.publish "userData", ->
