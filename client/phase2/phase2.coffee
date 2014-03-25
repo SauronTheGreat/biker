@@ -24,27 +24,45 @@ Template.phase2.events
       false
   
 
+@comp = 0;
+@si = 0;
   
 Template.phase2play.rendered = ->
+  console.log "phase1"
   Session.set("walletRefresh",true)
-  Deps.autorun ->
+  
+  comp = Deps.autorun ->
+    
+    
 
     if auctionDone.findOne()?
+      
+      if si isnt 0 
+        Meteor.clearInterval(si);
+        
+      si = setInterval ()->
+        timerTime =   auctionDone.findOne().countDown - new Date().getTime() 
+        $("#"+currentBidItem.findOne().citem).find(".countDownTimer").text(Math.round(timerTime/1000))
+      ,1000  
       if auctionDone.findOne().done
         $("#"+currentBidItem.findOne().citem).find(".bidVal").attr("disabled", "disabled"); 
         $("#"+currentBidItem.findOne().citem).find(".bidData").text(getTeamName(getLastBid().user_id)+" won!"); 
         
-        if Meteor.userId() is getLastBid().user_id
-          balanceMoney = Meteor.user().profile.wallet - getLastBid().bid
-          Meteor.users.update({_id:Meteor.userId()},{$set:{"profile.wallet":balanceMoney}})
+        if Meteor.userId() is getLastBid().user_id and !auctionDone.findOne().completed
+          console.log "reppear"
+          balanceMoney = parseInt(Meteor.user().profile.wallet) - parseInt(getLastBid().bid)
+          Meteor.call "updateUserWallet",Meteor.userId(),balanceMoney
+          Meteor.clearInterval(si);
+          comp.stop();
+          #Meteor.users.update({_id:Meteor.userId()},{$set:{"profile.wallet":balanceMoney}})
         
   
 Template.phase2play.wallet = ()->
 
-  if Meteor.user().profile.wallet?
+  if Meteor.user()?
     return Meteor.user().profile.wallet
   else
-    return 100000
+    return 10000
   
 Template.phase2play.refreshWallet = ()->
   Session.equals("walletRefresh",true)

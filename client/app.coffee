@@ -4,5 +4,6 @@ Meteor.startup ->
   @currentBid = ""
   Meteor.subscribe("userData");
 
+
     
   

@@ -39,10 +39,12 @@ Template.teamSelection.events
             if $(elm).is(":checked")
               if $(elm).val() is "a"
                 teama.push $(elm).attr("name")
-                Meteor.users.update({_id:$(elm).attr("name")},{$set:{"profile.team":"Team A"}})
+              
+                Meteor.call "updateUserTeam",$(elm).attr("name"),"Team A"
+              
               else
                 teamb.push $(elm).attr("name")
-                Meteor.users.update({_id:$(elm).attr("name")},{$set:{"profile.team":"Team B"}})
+                Meteor.call "updateUserTeam",$(elm).attr("name"),"Team B"
         
         teamOne.insert({users:teama})
         teamTwo.insert({users:teamb})

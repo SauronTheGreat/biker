@@ -13,15 +13,15 @@
   font-size:1.3em;
   font-weight:bold;
   border:none;
-  width:100%
+  width:100%;
+  color:white;
 }
 
 .grad
 {
-background: -webkit-linear-gradient(#F18B53, #EE6C22); /* For Safari 5.1 to 6.0 */
-background: -o-linear-gradient(#F18B53, #EE6C22); /* For Opera 11.1 to 12.0 */
-background: -moz-linear-gradient(#F18B53, #EE6C22); /* For Firefox 3.6 to 15 */
-background: linear-gradient(#F18B53, #EE6C22); /* standard syntax*/
+background:#3B170B  
+  
+
 }
 
 

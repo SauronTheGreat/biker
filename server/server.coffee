@@ -1,11 +1,14 @@
-Fiber = Npm.require('fibers');
 status = new Meteor.Collection("status");
 timeout = 0
 create_timeout = ()->
   if timeout isnt 0
     clear_timeout();
+    a = auctionDone.findOne();
+    newDateObj = new Date(new Date().getTime() + 60000);        
+    auctionDone.update({_id:a._id},{$set:{countDown:newDateObj}})
   timeout = Meteor.setTimeout(->
     a = auctionDone.findOne()
+                     
     auctionDone.update({_id:a._id},{$set:{done:true}})
     
   , 60000)
@@ -19,7 +22,7 @@ clear_timeout = ()->
 Meteor.startup ->
   currentBidItem.remove({})
   auctionDone.remove({})
-  auctionDone.insert({done:false})
+  auctionDone.insert({done:false,completed:false})
   if status.find().fetch().length isnt 1
     status.remove({});
     status.insert({phase1:false,phase2:false})
@@ -69,9 +72,14 @@ Meteor.methods
     
   bidSubmitted:()->
     
-  
     create_timeout();
     return true
+  updateUserTeam:(user_id,teamName)->
+     Meteor.users.update({_id:user_id},{$set:{"profile.team":teamName}})
+  updateUserWallet:(user_id,walletMoney)->
+     Meteor.users.update({_id:user_id},{$set:{"profile.wallet":walletMoney}})
+     a = auctionDone.findOne()
+     auctionDone.update({_id:a._id},{$set:{completed:true}})
 
     
 Meteor.publish "userData", ->
