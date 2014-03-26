@@ -68,7 +68,8 @@ Meteor.methods
     currentBidItem.insert({citem:item})
     a = auctionDone.findOne()
     auctionDone.update({_id:a._id},{$set:{done:false}},{$unset:{countDown:1}})
-
+  checkPhase:()->
+    return status.findOne().phase1
     
   bidSubmitted:()->
     

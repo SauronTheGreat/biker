@@ -84,4 +84,8 @@ Router.map ->
           
     path:"/phase2play"
     template:"phase2play"
+
+  @route "phase2results",
+    path:"/admin/p2results"
+    template:"phase2results"
     

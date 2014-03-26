@@ -1,0 +1,13 @@
+.phase1resultTable
+{
+    font-size:1.5em;
+    border: 3px solid black;
+}
+
+.phase1resultTable tr {
+    border: 3px solid #000000;
+}
+
+td {
+    border: 3px solid #000000;
+}

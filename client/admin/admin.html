@@ -8,14 +8,43 @@
   </div>
 </template>
 <template name="adminLogin">
+    <div class="container">
   <div class="row">
-    <div class="col-lg-12">
-      <div class="col-lg-6">
-         {{loginButtons}}
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+          <h1>Admin Sign in Page</h1>
+          <form class="form-horizontal">
+          <fieldset>
+              <!-- Sign In Form -->
+              <!-- Text input-->
+              <div class="control-group">
+                  <div class="controls">
+                      <input id="email" name="email" type="text" class="form-control input-lg input-md input-sm" placeholder="Your email"  required="required">
+                  </div>
+              </div>
+<br>
+
+              <!-- Password input-->
+              <div class="control-group">
+                  <div class="controls">
+                      <input  id="passwordinput" name="passwordinput" class="form-control input-lg" type="password" placeholder="Your password" required="required" >
+                  </div>
+              </div>
+
+
+              <!-- Button -->
+              <div class="control-group">
+                  <label class="control-label" for="signin"></label>
+                  <div class="controls">
+                      <button id="signin" name="signin" class="btn btn-success btn-block btn-lg">Sign In</button>
+                  </div>
+              </div>
+          </fieldset>
+          </form>
       </div>
     </div>
   </div>
-  
+    </div>
  
 </template>
 
@@ -77,3 +106,116 @@
     </div>
   </div>
 </template>
+
+    <template name="phase2results">
+
+        <div class="container">
+            <h1>Phase II results</h1>
+            <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover phase1resultTable">
+                <colgroup>
+                    <col class="col-xs-1">
+                    <col class="col-xs-7">
+                </colgroup>
+                <thead>
+                <tr>
+                <tr>
+                    <th></th>
+                    <th colspan="3">Functions</th>
+                    <th colspan="3">Looks</th>
+
+                </tr>
+                </tr>
+                <tr>
+
+                    <th>Team</th>
+                    <th>Engine</th>
+                    <th>Wheel</th>
+                    <th>Suspension</th>
+                    <th>Frame</th>
+                    <th>Tire</th>
+                    <th>Style</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Team A</td>
+                    <td>{{getData "engine" 0}}</td>
+                    <td>{{getData "wheel" 0}}</td>
+                    <td>{{getData "suspension" 0}}</td>
+                    <td>{{getData "frame" 0}}</td>
+                    <td>{{getData "tire" 0}}</td>
+                    <td>{{getData "style" 0}}</td>
+                </tr>
+                <tr>
+                    <td>Team B</td>
+                    <td>{{getData "engine" 1}}</td>
+                    <td>{{getData "wheel" 1}}</td>
+                    <td>{{getData "suspension" 1}}</td>
+                    <td>{{getData "frame" 1}}</td>
+                    <td>{{getData "tire" 1}}</td>
+                    <td>{{getData "style" 1}}</td>
+
+                </tr>
+
+
+                </tbody>
+            </table>
+            </div>
+            <div class="table-responsive">
+                <h1>Winnings</h1>
+                <table class="table table-bordered table-striped table-hover phase1resultTable">
+                    <colgroup>
+                        <col class="col-xs-1">
+                        <col class="col-xs-7">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                    <tr>
+                        <th></th>
+                        <th colspan="3">Functions</th>
+                        <th colspan="3">Looks</th>
+
+                    </tr>
+                    </tr>
+                    <tr>
+
+                        <th>Team</th>
+                        <th>Engine</th>
+                        <th>Wheel</th>
+                        <th>Suspension</th>
+                        <th>Frame</th>
+                        <th>Tire</th>
+                        <th>Style</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Team A</td>
+                        <td>{{getPoints "engine" 0}}</td>
+                        <td>{{getPoints  "wheel" 0}}</td>
+                        <td>{{getPoints  "suspension" 0}}</td>
+                        <td>{{getPoints  "frame" 0}}</td>
+                        <td>{{getPoints  "tire" 0}}</td>
+                        <td>{{getPoints  "style" 0}}</td>
+                    </tr>
+                    <tr>
+                        <td>Team B</td>
+                        <td>{{getPoints  "engine" 1}}</td>
+                        <td>{{getPoints  "wheel" 1}}</td>
+                        <td>{{getPoints  "suspension" 1}}</td>
+                        <td>{{getPoints  "frame" 1}}</td>
+                        <td>{{getPoints  "tire" 1}}</td>
+                        <td>{{getPoints  "style" 1}}</td>
+
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+

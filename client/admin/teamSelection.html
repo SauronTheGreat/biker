@@ -1,53 +1,77 @@
 <template name = "teamSelection">
-  <div class="row">
-    <div class="col-lg-12 col-md-12">
-      <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1" style="margin-top:5%">
-        <div class="table-responsive">
-  <table class="table table-bordered table-striped table-hover">
-      <colgroup>
-        <col class="col-xs-1">
-        <col class="col-xs-7">
-      </colgroup>
-      <thead>
-        <tr>
-          <th>UserName</th>
-          <th>Engine</th>
-          <th>Wheel</th>
-          <th>Suspension</th>
-          <th>Frame</th>
-          <th>Tire</th>
-          <th>Style</th>
-          <th>Team A</th>
-          <th>Team B</th>
-          
-        </tr>
-      </thead>
-      <tbody>
-        {{#each phase1results}}
-        <tr>
-          <td>
-            {{user_id}}
-          </td>
-          <td>{{engine}}</td>
-            <td>{{wheel}}</td>
-            <td>{{suspension}}</td>
-            <td>{{frame}}</td>
-            <td>{{tire}}</td>
-            <td>{{style}}</td>
-          <td><input type="radio" class="team" name="{{user_id}}" value="a"></td>
-          <td><input type="radio" class="team" name="{{user_id}}" value="b"></td>
-          
-        </tr>
-        {{/each}}
-        
-        
-      </tbody>
-    </table>
-          <a href="#" class="btn btn-success btn-lg " id="createTeams">Create Teams </a>
-</div>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-10 col-md-10">
+
+                    <div class="table-responsive">
+                        <h1>Results for Phase I</h1>
+                        <table class="table table-bordered table-striped table-hover phase1resultTable">
+                            <colgroup>
+                                <col class="col-xs-1">
+                                <col class="col-xs-7">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th colspan="3">Functions</th>
+                                <th colspan="3">Looks</th>
+
+                            </tr>
+                            <tr>
+
+                                <th>UserName</th>
+                                <th>Engine</th>
+                                <th>Wheel</th>
+                                <th>Suspension</th>
+                                <th>Frame</th>
+                                <th>Tire</th>
+                                <th>Style</th>
+                                <th>Average Function</th>
+                                <th>Average Looks</th>
+                                <th>STD DEV</th>
+                                <th>FUNC/LOOK</th>
+                                <th>Most IMP</th>
+                                <th>Least IMP</th>
+                                <th>Team A</th>
+                                <th>Team B</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each phase1results}}
+                            <tr class="danger">
+                                <td>
+                                    {{getUserName user_id}}
+                                </td>
+                                <td>{{engine}}</td>
+                                <td>{{wheel}}</td>
+                                <td>{{suspension}}</td>
+                                <td>{{frame}}</td>
+                                <td>{{tire}}</td>
+                                <td>{{style}}</td>
+                                <td>{{avg engine suspension wheel}}</td>
+                                <td>{{avg tire style frame}}</td>
+                                <td>{{stddev tire style frame engine suspension wheel}}</td>
+                                <td>{{ratio engine suspension wheel tire style frame  }}</td>
+                                <td>{{mostImp engine suspension wheel tire style frame  }}</td>
+                                <td>{{leastImp engine suspension wheel tire style frame  }}</td>
+                                <td><input type="radio" class="team" name="{{user_id}}" value="a"></td>
+                                <td><input type="radio" class="team" name="{{user_id}}" value="b"></td>
+
+                            </tr>
+                            {{/each}}
+
+
+                            </tbody>
+                        </table>
+                        <a href="#" class="btn btn-success btn-lg " id="createTeams">Create Teams </a>
+
+                </div>
+            </div>
+        </div>
+
     </div>
-  </div>
-  
+
+
 
 </template>
