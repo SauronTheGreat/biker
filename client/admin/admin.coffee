@@ -22,9 +22,9 @@ Template.admin.phase1Init = ()->
 Template.admin.rendered = ->
   Meteor.call "checkPhase",(err,res)->
     if res
-      $(".currentTask").html(Template.startPhase1());
-    else
       $(".currentTask").html(Template.startPhase2());
+    else
+      $(".currentTask").html(Template.startPhase1());
 
 
 Template.admin.events 
